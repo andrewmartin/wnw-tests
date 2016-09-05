@@ -56,18 +56,8 @@ $pad: 20px
 
 .container
   width: 1024px
-  max-width: 90%
+  max-width: 95%
   margin: 0 auto
-
-[class*='col-'],
-%col
-  float: left
-  padding-right: $pad
-  .grid &:last-of-type
-    padding-right: 0
-
-  +media('<desktop')
-    width: 100%
 
 .col-2-3
   width: 66.66%
@@ -86,6 +76,17 @@ $pad: 20px
 
 .col-1-8
   width: 12.5%
+
+[class*='col-'],
+%col
+  float: left
+  padding-right: $pad
+
+  +media('<desktop')
+    width: 100%
+
+  .grid &:last-of-type
+    padding-right: 0
 
 // Opt-in outside padding
 .grid-pad
@@ -120,6 +121,21 @@ body
 
   cite
     font-size: 13px
+
+.notice
+  text-align: center
+  position: fixed
+  top: 0
+  left: 0
+  padding: 10px
+  background: $red
+  color: #FFF
+  width: 100%
+  +fz(12px, 16px)
+  @extend %default-box-shadow
+
+  +media('>desktop')
+    display: none
 
 main,
 aside
