@@ -1,0 +1,218 @@
+@import '../../bower_components/include-media/dist/_include-media'
+
+// fonts
+$helvetica: 'Helvetica Neue', Helvetica, Arial, sans-serif
+$verdana: Verdana, $helvetica
+$opensans: 'Open Sans', $verdana
+
+// colors
+$gray-lighter: #ededef
+$red: #c2858a
+$blue: #0ab0ed
+$gray: #777777
+$green-light: #9ba974
+$green: #6b9955
+
+=border-box
+  -moz-box-sizing: border-box
+  -webkit-box-sizing: border-box
+  box-sizing: border-box
+
+*
+  +border-box
+
+%clearfix
+  display: table
+  clear: both
+  content: ""
+
+%default-transition
+  transition: all 0.5s ease-out
+
+%default-box-shadow
+  box-shadow: 0 0 3px rgba(0,0,0,0.1)
+
+%truncate
+  white-space: nowrap
+  overflow: hidden
+  text-overflow: ellipsis
+
+%list-unstyled
+  margin: 0
+  padding: 0
+  list-style-type: none
+
+=fz($size, $lh)
+  font-size: $size
+  line-height: $lh
+
+$pad: 20px
+
+.grid
+  margin: 0 0 $pad 0
+
+  &:after
+    @extend %clearfix
+
+.container
+  width: 1024px
+  max-width: 90%
+  margin: 0 auto
+
+[class*='col-'],
+%col
+  float: left
+  padding-right: $pad
+  .grid &:last-of-type
+    padding-right: 0
+
+  +media('<desktop')
+    width: 100%
+
+.col-2-3
+  width: 66.66%
+
+.col-1-3
+  width: 33.33%
+
+.col-1-2
+  width: 50%
+
+.col-3-4
+  width: 75%
+
+.col-1-4
+  width: 25%
+
+.col-1-8
+  width: 12.5%
+
+// Opt-in outside padding
+.grid-pad
+  padding: $pad 0 $pad $pad
+  [class*='col-']:last-of-type
+    padding-right: $pad
+
+a
+  @extend %default-transition
+  color: $red
+  text-decoration: none
+
+  &:hover
+    color: $blue
+
+body
+  background: #ededef
+  margin: 0
+  font-family: Verdana, 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif
+
+.main-header
+  @extend %default-box-shadow
+  text-align: center
+  padding: 25px
+  margin: 0 0 30px
+  background: rgba(255,255,255,0.5)
+
+  h1
+    font-size: 25px
+    line-height: 30px
+    margin: 0 0 5px
+
+  cite
+    font-size: 13px
+
+main,
+aside
+  @extend %col
+
+main
+  @extend .col-3-4
+
+aside
+  @extend .col-1-4
+
+  .tag
+    float: right
+
+p
+  margin: 0 0 15px
+
+$avatarSize: 75px
+
+.profile-card
+  @extend %default-box-shadow
+  padding: 20px
+  position: relative
+  background: #FFF
+  min-height: 225px
+  margin: 0 0 5px
+
+  &__header
+    padding-left: 55px
+    margin: 0 0 20px
+
+  &__title
+    @extend %truncate
+    +fz(15px, 1)
+    margin: 0
+
+  &__date
+    +fz(12px, 15px)
+    color: $gray
+    font-family: $helvetica
+
+  &__text
+    +fz(12px, 20px)
+    color: $gray
+    // font-family: $opensans
+
+  &__footer
+    @extend %clearfix
+    width: 100%
+    position: absolute
+    bottom: 0
+    left: 0
+    padding: 10px 20px
+    border-top: 2px dotted $gray-lighter
+
+    .ratings
+      float: left
+
+    .price
+      float: right
+
+  &__avatar
+    border: 3px solid #FFF
+    border-radius: 100%
+    width: $avatarSize
+    position: absolute
+    left: 0
+    margin: -15px 0 0 -15px
+    top: 0
+
+.ratings
+  @extend %list-unstyled
+
+  &__item
+    display: inline-block
+    +fz(12px, 16px)
+
+    &--love
+      color: $green-light
+
+    &--hate
+      color: $red
+
+.price
+  +fz(20px, 1)
+  color: $green
+
+.tag
+  +fz(11px, 15px)
+  font-weight: bold
+
+  &:hover
+    color: inherit
+
+  &--green
+    color: $green
