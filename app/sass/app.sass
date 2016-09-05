@@ -4,6 +4,7 @@
 $helvetica: 'Helvetica Neue', Helvetica, Arial, sans-serif
 $verdana: Verdana, $helvetica
 $opensans: 'Open Sans', $verdana
+$times: 'Times New Roman', Times, serif
 
 // colors
 $gray-lighter: #ededef
@@ -12,6 +13,7 @@ $blue: #0ab0ed
 $gray: #777777
 $green-light: #9ba974
 $green: #6b9955
+$green-bright: #0a9900
 
 =border-box
   -moz-box-sizing: border-box
@@ -41,6 +43,9 @@ $green: #6b9955
   margin: 0
   padding: 0
   list-style-type: none
+
+%center-text
+  text-align: center
 
 =fz($size, $lh)
   font-size: $size
@@ -102,17 +107,27 @@ a
   &:hover
     color: $blue
 
+img
+  max-width: 100%
+
 body
   background: #ededef
   margin: 0
   font-family: Verdana, 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif
 
+  &.book
+    background: #FFF
+
 .main-header
   @extend %default-box-shadow
-  text-align: center
+  @extend %center-text
   padding: 25px
   margin: 0 0 30px
   background: rgba(255,255,255,0.5)
+  font-family: $helvetica
+
+  .book &
+    background: $gray-lighter
 
   h1
     font-size: 25px
@@ -123,7 +138,7 @@ body
     font-size: 13px
 
 .notice
-  text-align: center
+  @extend %center-text
   position: fixed
   top: 0
   left: 0
@@ -232,3 +247,87 @@ $avatarSize: 75px
 
   &--green
     color: $green
+
+.expert
+  @extend %clearfix
+  width: 100%
+  line-height: 50px
+  font-family: $times
+  padding: 15px
+
+  img,h1,h2
+    float: left
+    margin: 0
+
+  img
+    border-radius: 100%
+    width: 50px
+    height: 50px
+    margin-right: 15px
+
+  h1
+    +fz(20px, 50px)
+
+  h2
+    +fz(20px, 50px)
+    float: right
+    color: $green-bright
+
+$chapter-gutter: 20px
+
+.chapter
+  font-family: $times
+  max-width: 100%
+  width: 500px
+  margin: 0 auto
+
+  &__label
+    @extend %center-text
+    +fz(14px, 18px)
+    text-transform: uppercase
+    display: block
+    margin: 0 0 $chapter-gutter
+    letter-spacing: 4px
+
+  p
+    +fz(16px, 24px)
+    margin: 0 0 $chapter-gutter
+
+  &__title
+    @extend %center-text
+    +fz(28px, 32px)
+    margin: 0 0 $chapter-gutter
+
+  &__image-row
+    @extend %clearfix
+
+  &__cited-image
+    @extend %center-text
+    float: right
+    margin: 0 0 $chapter-gutter $chapter-gutter
+    width: 50%
+
+    &--left
+      margin-right: $chapter-gutter
+      margin-left: 0
+      float: left
+
+    img
+      display: inline-block
+
+    cite
+      +fz(12px, 15px)
+
+  &__quote
+    +fz(19px, 25px)
+    font-style: italic
+    background: $gray-lighter
+    padding: 15px
+    float: right
+    margin: 0 0 $chapter-gutter $chapter-gutter
+    width: 50%
+
+    &--left
+      margin-right: $chapter-gutter
+      margin-left: 0
+      float: left

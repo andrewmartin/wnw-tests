@@ -15,10 +15,7 @@
     "autoprefixer": "^6.4.1",
     "gulp-postcss": "^6.1.1",
     "gulp-uncss": "^1.0.6",
-    "postcss-sorting": "^1.6.1"
-  },
-  "dependencies": {
-    "gulp-concat": "^2.6.0",
+    "postcss-sorting": "^1.6.1",
     "gulp-load-plugins": "^1.2.4",
     "gulp-rename": "^1.2.2"
   }

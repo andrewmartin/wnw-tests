@@ -32,11 +32,7 @@ gulp.task('sass', function() {
 gulp.task('uncss', ['sass'], function() {
   return gulp
     .src('./app/css/app.css')
-    .pipe($.uncss({
-      html: ['./**/*.html'],
-      report: true,
-      ignoreSheets: [/fonts.googleapis/, /cdnjs/]
-    }))
+    .pipe($.uncss({html: ['./**/index.html']}))
     .pipe($.rename('dist.css'))
     .pipe(gulp.dest('app/dist'));
 });
